@@ -1,0 +1,958 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Info | TECHFEST 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/index.css">
+<link rel="stylesheet" href="/styles/event.css">
+<link rel="stylesheet" href="/styles/stco.css">
+  <style>
+       * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* .profile-container:hover */
+.profile-container {
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  transition: 1s all ease;
+  
+}
+
+.profile-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1') no-repeat center center/cover;
+  z-index: -1;
+  opacity: 1;  
+  transition: all .5s ease-in;
+}
+
+.profile-container:hover:before {
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+
+/* Profile Card Wrapper */
+.profile-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.profile-wrapper::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #2371ae 0%, #bb47d4 100%);
+  transform: skew(30deg) translateX(125%);
+  opacity: 0.9;
+  transition: all 0.6s ease;
+}
+
+.profile-wrapper::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #2371ae 0%, #bb47d4 100%);
+  transform: skew(30deg) translateX(-125%);
+  opacity: 0.9;
+  transition: all 0.6s ease;
+}
+
+.profile-container:hover .profile-wrapper::after{
+  transform: skew(30deg) translateX(125%);
+  background: linear-gradient(to right, #bb47d4 0%, #2371ae 100%);
+  
+}
+.profile-container:hover .profile-wrapper::before{
+  transform: skew(30deg) translateX(-125%);
+  background: linear-gradient(to right, #bb47d4 0%, #2371ae 100%);
+}
+
+/* Profile Card */
+.profile-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 10px;
+  position: relative;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.profile-container:hover .profile-card {
+  opacity: 1;
+  transition: all 0.6s ease;
+  transition-delay: 0.2s;
+}
+
+.profile-card .fav-icon {
+  color: #ec0e0e;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 21px;
+  cursor: pointer;
+} 
+
+/* Profile Picture */
+.profile-card img {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 1rem 0;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to right, green, gold);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  /* border: 2px solid #1999; */
+  position: relative;
+}
+
+.profile-card  h2 {
+  line-height: 1.2;
+  color: #222;
+}
+.profile-card  h4 {
+  line-height: 1.5;
+  color: #444;
+}
+
+.profile-card  p {
+  line-height: 1.2;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Profile Icons */
+.profile-card .icons {
+  display: flex;
+  color: #333;
+  width: 90%;
+  justify-content: space-evenly;
+  font-size: 1.4rem;
+  margin: 5px 0;
+}
+
+.profile-card .icons i:hover {
+  background-image: linear-gradient(to right, #bb47d4 0%, #2371ae 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+/* Profile Button */
+.profile-card a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  padding: 8px 20px;
+  margin-top: 1rem;
+  background: #2371ae;
+  border-radius: 50px;
+  background: linear-gradient(to right, #bb47d4 0%, #2371ae 100%);
+}
+  </style>
+</head>
+<body>
+
+<!-- Floating Menu Button -->
+<div class="floating-menu-button" onclick="toggleMenu()">☰</div>
+
+<!-- Floating Menu -->
+<div class="floating-menu" id="floatingMenu">
+  <a href="#events">Events</a>
+  <a href="#coordinators">Coordinators</a>
+  <a href="#staffs">Staff</a>
+  <a href="#pamphlets">Pamphlets</a>
+</div>
+
+<section class="hero">
+  <h1>Welcome to TECHFEST 2025</h1>
+  <p>Unleashing innovation through competitions, design, gaming, and intellectual challenges.</p>
+</section>
+
+<section class="section" id="events">
+  <h2>🎯 Technical Events</h2>
+  <div class="event-row">
+    <img src="/images/OIP.webp" alt="Event Image">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+
+   <div class="event-row">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+   <div class="event-row">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div> <div class="event-row">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div> <div class="event-row">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+   
+</section>
+
+<section class="section2" id="events2">
+  <h2>🎯 Non Technical Events</h2>
+  <div class="event-row2">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content2">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group2">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+  <div class="event-row2">
+    <img src="/images/gta.webp" alt="Event Image">
+    <div class="event-content2">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group2">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+  <div class="event-row2">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content2">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group2">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+  <div class="event-row2">
+    <img src="https://via.placeholder.com/200" alt="Event Image">
+    <div class="event-content2">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints. Participants will be tested on logical reasoning, machine learning strategies, and creative problem solving using AI tools.</p>
+      <div class="button-group2">
+  <button>Register</button>
+  <button>Know More</button>
+</div>
+    </div><i class="fa fa-xing" aria-hidden="true"></i>
+  </div>
+
+ 
+   
+</section>
+
+<section class="section" id="coordinators">
+  <h2>🤝 Coordinators</h2>
+  <div class="slider-container">
+    <div class="slider-track">
+      <!-- Repeat profiles for infinite loop -->
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+      <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+      <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+      <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+      <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+      <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+        <div class="container">
+
+    <div class="profile-container">
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+          <div class="fav-icon">
+            <i class="far fa-heart"></i>
+          </div>
+
+          <!-- Profile-Picture -->
+      <img src="https://www.dropbox.com/s/ce3avjentos3rp3/profile-pcs.jpg?raw=1" alt="profile pics">
+
+      <h2>Gabriella Moreira</h2>
+      <h4>Lead Developer</h4>
+
+      <p>Lorem ipsum dolor sit amet conse adipisicing elit. Odit omnis odio tenetur eveniet soluta numquam deleniti sequi dolore nostrum sit.</p>
+
+      <!-- Social Icons -->
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-behance"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+
+      <!-- Profile Button -->
+      <a href="#">View Profile</a>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+    
+    </div>
+  </div>
+</section>
+
+<section class="section" id="staffs">
+  <h2>🧑‍🏫 Staff In-charge</h2>
+  <div class="slider-container">
+    <div class="slider-track">
+      <div class="profile-card">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Profile">
+        <h3>Dr. Priya Anand</h3>
+        <p>Dept. Coordinator</p>
+      </div>
+      <div class="profile-card">
+        <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="Profile">
+        <h3>Mr. Karthik B</h3>
+        <p>Event Head</p>
+      </div>
+
+      <!-- Duplicated for infinite effect -->
+      <div class="profile-card">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Profile">
+        <h3>Dr. Priya Anand</h3>
+        <p>Dept. Coordinator</p>
+      </div>
+      <div class="profile-card">
+        <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="Profile">
+        <h3>Mr. Karthik B</h3>
+        <p>Event Head</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="pamphlets">
+  <h2>📰 Pamphlets</h2>
+  <div class="pamphlets">
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+1');"></div>
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+2');"></div>
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+3');"></div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 TECHFEST | Designed by Student Council
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("floatingMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  }
+</script>
+<script>
+  // Entry animation for event and profile cards
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe event cards
+  document.querySelectorAll('.event-row, .event-row2, .profile-card').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+
+</body>
+</html>

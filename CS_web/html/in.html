@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Info | TECHFEST 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #ccc;
+    }
+
+    nav {
+      background: #111;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    nav h1 {
+      margin: 0;
+      font-size: 26px;
+      color: #00d8ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    .section {
+      padding: 100px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #00d8ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card, .event-row {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover, .event-row:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 70px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0 8px;
+      color: #00d8ff;
+      font-size: 20px;
+    }
+
+    .card p, .event-row p {
+      color: #aaa;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .event-row {
+      margin: 20px auto;
+      max-width: 700px;
+      padding: 30px;
+      background-color: #1f1f1f;
+      border-left: 5px solid #00d8ff;
+    }
+
+    .event-row h3 {
+      color: #00d8ff;
+      font-size: 26px;
+    }
+
+    .event-row p {
+      font-size: 16px;
+    }
+
+    .event-row button {
+      margin-top: 15px;
+      margin-right: 10px;
+      padding: 10px 20px;
+      background-color: #00d8ff;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .event-row button:hover {
+      background-color: #00b6d1;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>TECHFEST 2025</h1>
+  <div class="nav-links">
+    <a href="#events">Events</a>
+    <a href="#coordinators">Coordinators</a>
+    <a href="#staffs">Staff</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Welcome to TECHFEST 2025</h1>
+  <p>Explore exciting events, meet our team, and experience the energy of innovation.</p>
+</section>
+
+<section class="section" id="events">
+  <h2>🎯 Events</h2>
+  <div class="event-row">
+    <h3>AI Code Quest</h3>
+    <p><strong>Date:</strong> Aug 8, 2025</p>
+    <p><strong>Max Members:</strong> 2</p>
+    <p><strong>Entry Fee:</strong> ₹50</p>
+    <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints.</p>
+    <button>Register</button>
+    <button>Know More</button>
+  </div>
+  <div class="grid">
+    <!-- Existing Event Cards -->
+  </div>
+</section>
+
+<section class="section" id="coordinators">
+  <h2>🤝 Coordinators</h2>
+  <div class="grid">
+    <!-- Coordinator Cards -->
+  </div>
+</section>
+
+<section class="section" id="staffs">
+  <h2>🧑‍🏫 Staff Members</h2>
+  <div class="grid">
+    <!-- Staff Cards -->
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 TECHFEST | Designed by Student Council
+</footer>
+
+</body>
+</html>

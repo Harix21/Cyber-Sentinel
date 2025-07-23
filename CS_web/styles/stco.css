@@ -1,0 +1,64 @@
+.slider-container {
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  
+  margin-top: 1rem;
+}
+
+.slider-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 200px;
+  flex-shrink: 0;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+.profile-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.profile-card h3 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.1rem;
+}
+.profile-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Hover effect */
+.slider-container:hover .profile-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

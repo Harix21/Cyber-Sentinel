@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Info | TECHFEST 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1b;
+      color: #e0e0e0;
+    }
+
+    .floating-menu-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00fff7;
+      color: #000;
+      font-size: 26px;
+      padding: 12px 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .floating-menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #1c1c2e;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      z-index: 999;
+      padding: 10px 0;
+    }
+
+    .floating-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .floating-menu a:hover {
+      background: #00d8ff;
+      color: #000;
+    }
+
+    .hero {
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(to right, #121233, #0c6c78);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      max-width: 700px;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: #00fff7;
+    }
+
+    .event-row {
+      display: flex;
+      background: #1f1f2f;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: slideUp 0.8s ease-in-out;
+      border-left: 5px solid #00d8ff;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .event-row img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #00fff7;
+    }
+
+    .event-content {
+      flex: 1;
+    }
+
+    .event-content h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #00fff7;
+    }
+
+    .event-content p {
+      font-size: 15px;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+
+    .event-content button {
+      margin-top: 15px;
+      margin-right: 10px;
+      padding: 10px 20px;
+      background-color: #00d8ff;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .event-content button:hover {
+      background-color: #00b6d1;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1f1f2f;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border-left: 5px solid #00d8ff;
+      text-align: center;
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      border: 2px solid #00fff7;
+    }
+
+    .pamphlets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .pamphlet {
+      width: 250px;
+      height: 360px;
+      background-color: #333;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
+    }
+
+    footer {
+      background: #1c1c2e;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .event-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-row img {
+        width: 100%;
+        height: auto;
+      }
+
+      .event-content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Menu Button -->
+<div class="floating-menu-button" onclick="toggleMenu()">☰</div>
+
+<!-- Floating Menu -->
+<div class="floating-menu" id="floatingMenu">
+  <a href="#events">Events</a>
+  <a href="#coordinators">Coordinators</a>
+  <a href="#staffs">Staff</a>
+  <a href="#pamphlets">Pamphlets</a>
+</div>
+
+<section class="hero">
+  <h1>Welcome to TECHFEST 2025</h1>
+  <p>Unleashing innovation through competitions, design, gaming, and intellectual challenges.</p>
+</section>
+
+<section class="section" id="events">
+  <h2>🎯 Technical Events</h2>
+  <div class="event-row">
+    <img src="https://via.placeholder.com/120" alt="Event">
+    <div class="event-content">
+      <h3>AI Code Quest</h3>
+      <p><strong>Date:</strong> Aug 8, 2025</p>
+      <p><strong>Max Members:</strong> 2</p>
+      <p><strong>Entry Fee:</strong> ₹50</p>
+      <p><strong>Description:</strong> Crack AI puzzles in time-bound challenges with ML-based hints.</p>
+      <button>Register</button>
+      <button>Know More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="coordinators">
+  <h2>🤝 Coordinators</h2>
+  <div class="card-grid">
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/men/10.jpg" />
+      <h3>Rahul M</h3>
+      <p>Event Logistics</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="staffs">
+  <h2>🧑‍🏫 Staff In-charge</h2>
+  <div class="card-grid">
+    <div class="card">
+      <img src="https://randomuser.me/api/portraits/women/12.jpg" />
+      <h3>Dr. Priya Anand</h3>
+      <p>Dept. Coordinator</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pamphlets">
+  <h2>📰 Pamphlets</h2>
+  <div class="pamphlets">
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+1');"></div>
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+2');"></div>
+    <div class="pamphlet" style="background-image: url('https://via.placeholder.com/300x400?text=Pamphlet+3');"></div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 TECHFEST | Designed by Student Council
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("floatingMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  }
+</script>
+
+</body>
+</html>
